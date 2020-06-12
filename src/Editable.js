@@ -4,7 +4,7 @@ import TextField from "./components/TextField";
 import TextArea from "./components/TextArea";
 import Select from "./components/Select";
 import Date from "./components/Date";
-import {Button, Form, PopoverHeader, PopoverBody, Popover, Spinner, FormText} from "reactstrap";
+import {Button, Form, PopoverHeader, PopoverBody, Popover, Spinner, FormText} from "react-boostrap";
 import File from "./components/File";
 
 const fontAwesomeStyle = {

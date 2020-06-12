@@ -14,5 +14,5 @@ module.exports = {
         babel({exclude: "node_modules/**"}),
         visualizer({filename: "bundleSize.html", open: true})
     ],
-    external: ["react", "prop-types", "reactstrap"]
+    external: ["react", "prop-types", "react-bootstrap"]
 };

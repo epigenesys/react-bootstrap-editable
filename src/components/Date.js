@@ -1,5 +1,5 @@
 import React from "react"
-import {Input} from "reactstrap";
+import {Input} from "react-bootstrap";
 
 export default class Date extends React.Component {
     constructor(props) {
