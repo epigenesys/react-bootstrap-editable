@@ -1,5 +1,5 @@
 import React from "react"
-import {Input} from "react-bootstrap";
+import { FormControl } from "react-bootstrap";
 
 export default class TextField extends React.Component {
     constructor(props){
@@ -8,7 +8,7 @@ export default class TextField extends React.Component {
     render(){
         return (
             <React.Fragment>
-                <Input invalid={!!this.props.validationText} autoFocus
+                <FormControl autoFocus
                        value={this.props.value? this.props.value : ""}
                        onChange={e => this.props.setNewValue(e.target.value)}
                        type="text" bsSize="sm" className="mr-1"/>
