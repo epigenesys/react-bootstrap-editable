@@ -1,18 +1,8 @@
-import React from "react"
-// import {Input} from "react-bootstrap";
+import TextField from "./TextField";
 
-export default class TextArea extends React.Component {
+export default class TextArea extends TextField {
     constructor(props){
         super(props)
-    }
-    render(){
-        return (
-            <React.Fragment>
-                <Input invalid={!!this.props.validationText} autoFocus
-                       value={this.props.value? this.props.value : ""}
-                       onChange={e => this.props.setNewValue(e.target.value)}
-                       type="textarea" className="mb-1"/>
-            </React.Fragment>
-        )
+        this.state = { componentClass: 'textarea', type: null }
     }
 }

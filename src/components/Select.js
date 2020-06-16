@@ -1,20 +1,16 @@
-import React from "react"
-// import {Input} from "react-bootstrap";
+import React from 'react';
+import TextField from './TextField';
 
-export default class TextField extends React.Component {
+export default class Select extends TextField {
     constructor(props){
         super(props)
-    }
-    render(){
         const options = this.props.options.map((value, index) => {
             return <option key={index + value}>{value}</option>
         })
-        return (
-            <React.Fragment>
-                <Input value={this.props.value} onChange={e => this.props.setNewValue(e.target.value)}
-                       type="select" bsSize="sm" className="mr-1">{options}</Input>
-                {this.props.controls}
-            </React.Fragment>
-        )
+        this.state = {
+            componentClass: 'select',
+            type: null,
+            options: options
+        }
     }
 }

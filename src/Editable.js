@@ -1,14 +1,13 @@
 import React from "react"
+import ReactDOM from 'react-dom';
 import PropTypes from "prop-types";
-import TextField from "./components/TextField";
-// import TextArea from "./components/TextArea";
-// import Select from "./components/Select";
-// import Date from "./components/Date";
-// import Button from "react-bootstrap/Button";
-// import Form from "react-bootstrap/Form";
-// import File from "./components/File";
+import { Form, Button, HelpBlock, Popover, Overlay } from 'react-bootstrap';
 
-import { Form, Button, HelpBlock } from 'react-bootstrap';
+import TextField from "./components/TextField";
+import TextArea from "./components/TextArea";
+import Select from "./components/Select";
+
+import './Editable.module.css';
 
 const fontAwesomeStyle = {
     textAlign: "center",
@@ -23,6 +22,7 @@ export default class Editable extends React.Component{
         super(props);
 
         this.state = {
+            link: this.clickableLink,
             value: this.props.initialValue,
             newValue: this.props.initialValue,
             isEditing: false,
@@ -30,7 +30,7 @@ export default class Editable extends React.Component{
             isLoading: false,
         };
         //used for popover mode
-        this.clickableLink = React.createRef();
+        this.clickableLink = this.clickableLink.bind(this);
     }
     componentDidMount() {
         if(this.props.ajax && !this.props.validate && !this.props.disabled){
@@ -44,16 +44,19 @@ export default class Editable extends React.Component{
             this.setState({value: this.props.initialValue, newValue: this.props.initialValue})
         }
     }
+    clickableLink(){
+        return ReactDOM.findDOMNode(this.link);
+    }
     getEditingComponent(){
         let confirmButton = (
-            <Button className="ml-auto mr-1" bsStyle="primary" size="sm">
+            <Button type="submit" bsStyle="primary" bsSize="sm" style={{marginLeft: "5px"}}>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style={fontAwesomeStyle}>
                     <path color="white" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"/>
                 </svg>
             </Button>
         );
         let cancelButton = (
-            <Button bsStyle="default" size="sm" onClick={() => this.onCancel()}>
+            <Button bsStyle="default" bsSize="sm" onClick={() => this.onCancel()} style={{ marginLeft: "5px" }}>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512" style={{ ...fontAwesomeStyle, fill: "black" }}>
                     <path d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"/>
                 </svg>
@@ -94,31 +97,16 @@ export default class Editable extends React.Component{
             case "select":
                 component = <Select {...commonProps} options={this.props.options}/>;
                 break;
-            case "date":
-                component = <Date {...commonProps}/>;
-                break;
             case "textarea":
-                return (
-                    <Form onSubmit={(e) => this.onFormSubmit(e)}>
-                        <TextArea {...commonProps}/>
-                        <div className="d-flex align-items-start">
-                            <HelpBlock className="mt-0">{this.state.validationText}</HelpBlock>
-                            {controls}
-                        </div>
-                    </Form>);
-            case "file":
-                component = <File {...commonProps} label={this.props.label}/>;
+                component = <TextArea {...commonProps} />;
                 break;
             default:
                 console.error(`Editable(${this.props.id}): "${this.props.type}" is not a valid value for the "type" prop`)
                 return null
         }
         return(
-            <Form onSubmit={(e) => this.onFormSubmit(e)} className={this.props.className}>
-                <div className="align-items-baseline d-flex">
-                    {component}
-                </div>
-                <HelpBlock className="mt-0">{this.state.validationText}</HelpBlock>
+            <Form onSubmit={(e) => this.onFormSubmit(e)} className={`${this.props.className || ''} text-nowrap`} inline>
+                {component}
             </Form>
         )
     }
@@ -197,17 +185,17 @@ export default class Editable extends React.Component{
             //add label if applicable
             p = this.props.label? `${this.props.label}: ${p}` : p;
             let popover = this.props.mode === "popover"?(
-                <Popover isOpen={this.state.isEditing} placement={this.props.placement}
-                         target={this.clickableLink}>
-                    <PopoverHeader>{this.props.label}</PopoverHeader>
-                    <PopoverBody>{this.getEditingComponent()}</PopoverBody>
-                </Popover>
+                <Overlay show={this.state.isEditing} placement={this.props.placement} target={this.clickableLink}>
+                    <Popover id="editable-popover" title={this.props.label} className="editable-popup">
+                        {this.getEditingComponent()}
+                    </Popover>
+                </Overlay>
             ) : null;
 
             return(
                 <Form onSubmit={(e) => this.onFormSubmit(e)} className={this.props.className} inline>
                     {p && this.props.showText && <p className="my-0" style={{"whiteSpace": "pre-wrap"}}>{p}</p>}
-                    {a && <a ref={this.clickableLink} className="ml-1 mt-auto" href="#"
+                    {a && <a ref={link => { this.link = link }} className="ml-1 mt-auto" href="#"
                              onClick={(e) => {e.preventDefault(); this.setState({isEditing: true})}}>{a}</a>}
                     {popover}
                 </Form>

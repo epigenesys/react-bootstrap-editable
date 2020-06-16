@@ -3,28 +3,44 @@ import { action } from '@storybook/addon-actions';
 import Editable from '../src/Editable';
 
 export default {
-  component: Editable,
   title: 'Editable',
 };
 
-export const text = () => <Editable
-  ajax={null}
-  alwaysEditing={false}
-  className={null}
-  disabled={false}
-  editText="Edit"
-  id={null}
-  initialValue="Hello World!"
-  isValueClickable={false}
-  label={null}
-  mode="inline"
-  onSubmit={null}
-  onValidated={null}
-  options={null}
-  placement="top"
-  renderCancelElement={null}
-  renderConfirmElement={null}
-  showText
+let sharedProps = {
+  ajax: null,
+  alwaysEditing: false,
+  className: null,
+  disabled: false,
+  editText: null,
+  id: null,
+  initialValue: "Hello",
+  isValueClickable: true,
+  label: null,
+  mode: "popover",
+  onSubmit: null,
+  onValidated: null,
+  options: null,
+  placement: "right",
+  renderCancelElement: null,
+  renderConfirmElement: null,
+}
+
+export const TextField = () => <Editable
+  { ...sharedProps }
   type="textfield"
-  validate={null}
+/>;
+
+export const TextArea = () => <Editable
+  {...sharedProps}
+  type="textarea"
+/>;
+
+export const Select = () => <Editable
+  {...sharedProps}
+  type="select"
+  options={[
+    'Hello',
+    'Mellow',
+    'Yellow'
+  ]}
 />;
