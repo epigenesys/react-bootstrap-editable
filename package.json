@@ -8,7 +8,7 @@
     "edit",
     "ajax"
   ],
-  "version": "0.6.4",
+  "version": "0.6.5",
   "main": "dist/editable.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -52,6 +52,7 @@
     "react-demo": "^2.0.0",
     "rollup": "^1.32.1",
     "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-postcss": "^3.1.2",
     "rollup-plugin-visualizer": "^3.3.2"
   },
   "description": "Clean editable bootstrap components for react. Ajax support!",

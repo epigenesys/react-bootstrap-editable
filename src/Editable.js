@@ -7,7 +7,7 @@ import TextField from "./components/TextField";
 import TextArea from "./components/TextArea";
 import Select from "./components/Select";
 
-import './Editable.module.css';
+import './editable.css';
 
 const fontAwesomeStyle = {
     textAlign: "center",
@@ -186,7 +186,7 @@ export default class Editable extends React.Component{
             p = this.props.label? `${this.props.label}: ${p}` : p;
             let popover = this.props.mode === "popover"?(
                 <Overlay show={this.state.isEditing} placement={this.props.placement} target={this.clickableLink}>
-                    <Popover id="editable-popover" title={this.props.label} className="editable-popup">
+                    <Popover id="editable-popover" title={this.props.label}>
                         {this.getEditingComponent()}
                     </Popover>
                 </Overlay>
