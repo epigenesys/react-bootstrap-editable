@@ -409,14 +409,9 @@ var Editable = /*#__PURE__*/function (_React$Component) {
       var controls = /*#__PURE__*/React.createElement(React.Fragment, null, confirmButton, cancelButton);
 
       if (this.state.isLoading) {
-        controls = /*#__PURE__*/React.createElement("div", {
-          className: "my-auto mx-4"
-        }, /*#__PURE__*/React.createElement(Spinner, {
-          style: {
-            width: "1.5rem",
-            height: "1.5rem"
-          }
-        }));
+        controls = /*#__PURE__*/React.createElement("i", {
+          className: "fa fa-fw fa-spinner fa-spin"
+        });
       }
 
       var commonProps = {

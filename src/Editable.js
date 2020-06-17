@@ -77,10 +77,7 @@ export default class Editable extends React.Component{
             </React.Fragment>
         );
         if(this.state.isLoading){
-            controls = (
-                <div className="my-auto mx-4">
-                    <Spinner  style={{width: "1.5rem", height: "1.5rem"}}/>
-                </div>)
+            controls = <i className="fa fa-fw fa-spinner fa-spin" />
         }
         let commonProps = {
             value: this.state.newValue,

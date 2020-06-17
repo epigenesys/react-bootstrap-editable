@@ -44,3 +44,10 @@ export const Select = () => <Editable
     'Yellow'
   ]}
 />;
+
+export const Ajax = () => <Editable
+  {...sharedProps}
+  type="textfield"
+  validate={(value) => {}}
+  ajax={(xhr, validValue, id) => { console.log(validValue); console.log(id) }}
+/>;
