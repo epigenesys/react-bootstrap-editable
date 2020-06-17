@@ -291,7 +291,7 @@ function styleInject(css, ref) {
   }
 }
 
-var css_248z = "#editable-popover {\n  max-width: none !important;\n}\n\n#editable-popover .btn {\n  vertical-align: top;\n}\n\n#editable-popover .help-block {\n  margin: 0px;\n}\n\n#editable-popover .has-error .help-block {\n  margin-top: 5px\n}";
+var css_248z = "#editable-popover {\n  max-width: none !important;\n}\n\n#editable-popover .fa-spinner,\n#editable-popover .btn {\n  margin-left: 5px;\n}\n\n#editable-popover .btn {\n  vertical-align: top;\n}\n\n#editable-popover .help-block {\n  margin: 0px;\n}\n\n#editable-popover .has-error .help-block {\n  margin-top: 5px\n}";
 styleInject(css_248z);
 
 var fontAwesomeStyle = {
@@ -357,10 +357,7 @@ var Editable = /*#__PURE__*/function (_React$Component) {
       var confirmButton = /*#__PURE__*/React.createElement(reactBootstrap.Button, {
         type: "submit",
         bsStyle: "primary",
-        bsSize: "sm",
-        style: {
-          marginLeft: "5px"
-        }
+        bsSize: "sm"
       }, /*#__PURE__*/React.createElement("svg", {
         xmlns: "http://www.w3.org/2000/svg",
         viewBox: "0 0 512 512",
@@ -374,9 +371,6 @@ var Editable = /*#__PURE__*/function (_React$Component) {
         bsSize: "sm",
         onClick: function onClick() {
           return _this2.onCancel();
-        },
-        style: {
-          marginLeft: "5px"
         }
       }, /*#__PURE__*/React.createElement("svg", {
         xmlns: "http://www.w3.org/2000/svg",
@@ -410,7 +404,7 @@ var Editable = /*#__PURE__*/function (_React$Component) {
 
       if (this.state.isLoading) {
         controls = /*#__PURE__*/React.createElement("i", {
-          className: "fa fa-fw fa-spinner fa-spin"
+          className: "fa fa-fw fa-spinner fa-spin fa-2x"
         });
       }
 
