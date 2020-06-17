@@ -578,6 +578,12 @@ var Editable = /*#__PURE__*/function (_React$Component) {
 
         p = this.props.label ? "".concat(this.props.label, ": ").concat(p) : p;
         var popover = this.props.mode === "popover" ? /*#__PURE__*/React.createElement(reactBootstrap.Overlay, {
+          rootClose: true,
+          onHide: function onHide() {
+            return _this4.setState({
+              isEditing: false
+            });
+          },
           show: this.state.isEditing,
           placement: this.props.placement,
           target: this.clickableLink
@@ -606,7 +612,7 @@ var Editable = /*#__PURE__*/function (_React$Component) {
             e.preventDefault();
 
             _this4.setState({
-              isEditing: true
+              isEditing: !_this4.state.isEditing
             });
           }
         }, a), popover);

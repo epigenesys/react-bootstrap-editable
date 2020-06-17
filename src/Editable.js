@@ -187,7 +187,13 @@ export default class Editable extends React.Component{
             //add label if applicable
             p = this.props.label? `${this.props.label}: ${p}` : p;
             let popover = this.props.mode === "popover"?(
-                <Overlay show={this.state.isEditing} placement={this.props.placement} target={this.clickableLink}>
+                <Overlay
+                    rootClose={true}
+                    onHide={() => this.setState({ isEditing: false })}
+                    show={this.state.isEditing}
+                    placement={this.props.placement}
+                    target={this.clickableLink}
+                >
                     <Popover id="editable-popover" title={this.props.label}>
                         {this.getEditingComponent()}
                     </Popover>
@@ -198,7 +204,7 @@ export default class Editable extends React.Component{
                 <Form onSubmit={(e) => this.onFormSubmit(e)} className={this.props.className} inline>
                     {p && this.props.showText && <p className="my-0" style={{"whiteSpace": "pre-wrap"}}>{p}</p>}
                     {a && <a ref={link => { this.link = link }} className="ml-1 mt-auto" href="#"
-                             onClick={(e) => {e.preventDefault(); this.setState({isEditing: true})}}>{a}</a>}
+                             onClick={(e) => {e.preventDefault(); this.setState({isEditing: !this.state.isEditing})}}>{a}</a>}
                     {popover}
                 </Form>
             )
