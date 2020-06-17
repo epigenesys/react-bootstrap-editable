@@ -10,13 +10,16 @@ export default class TextField extends React.Component {
         return (
             <React.Fragment>
                 <FormGroup validationState={this.props.validationText ? 'error' : null} >
-                    <FormControl autoFocus
+                    <FormControl
+                        autoFocus
                         value={this.props.value ? this.props.value : ""}
                         onChange={e => this.props.setNewValue(e.target.value)}
-                        componentClass={this.state.componentClass} type={this.state.type}
-                        bsSize="sm" className="mr-1">
-                            {this.state.options}
-                        </FormControl>
+                        componentClass={this.state.componentClass}
+                        type={this.state.type}
+                        bsSize="sm" className="mr-1"
+                    >
+                        {this.state.options}
+                    </FormControl>
                     <FormControl.Feedback />
                     <HelpBlock>{this.props.validationText}</HelpBlock>
                 </FormGroup>

@@ -247,10 +247,13 @@ var Select = /*#__PURE__*/function (_TextField) {
 
     _this = _super.call(this, props);
 
-    var options = _this.props.options.map(function (value, index) {
+    var options = _this.props.options.map(function (option, index) {
+      var value = option.value;
+      var label = option.label;
       return /*#__PURE__*/React.createElement("option", {
-        key: index + value
-      }, value);
+        key: index + value,
+        value: value
+      }, label);
     });
 
     _this.state = {
@@ -558,7 +561,10 @@ var Editable = /*#__PURE__*/function (_React$Component) {
           if (this.props.disabled) {
             p = value;
           } else {
-            a = value;
+            var selectedOption = this.props.options.filter(function (option) {
+              return option.value === value;
+            });
+            a = this.props.type === "select" ? selectedOption[0].label : value;
           }
         } else {
           p = value;

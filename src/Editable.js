@@ -173,7 +173,8 @@ export default class Editable extends React.Component{
                 if(this.props.disabled){
                     p = value
                 }else{
-                    a = value
+                    const selectedOption = this.props.options.filter((option) => { return option.value === value });
+                    a = (this.props.type === "select" ? selectedOption[0].label : value)
                 }
             }else{
                 p = value

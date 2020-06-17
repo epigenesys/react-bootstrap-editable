@@ -38,10 +38,11 @@ export const TextArea = () => <Editable
 export const Select = () => <Editable
   {...sharedProps}
   type="select"
+  initialValue="hello"
   options={[
-    'Hello',
-    'Mellow',
-    'Yellow'
+    { label: 'Hello', value: 'hello' },
+    { label: 'Mellow', value: 'mellow' },
+    { label: 'Yellow', value: 'yell' }
   ]}
 />;
 
