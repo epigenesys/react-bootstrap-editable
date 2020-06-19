@@ -1,0 +1,20 @@
+#editable-popover {
+  max-width: none !important;
+}
+
+#editable-popover .fa-spinner,
+#editable-popover .btn {
+  margin-left: 5px;
+}
+
+#editable-popover .btn {
+  vertical-align: top;
+}
+
+#editable-popover .help-block {
+  margin: 0px;
+}
+
+#editable-popover .has-error .help-block {
+  margin-top: 5px
+}
