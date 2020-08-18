@@ -201,7 +201,7 @@ export default class Editable extends React.Component{
             ) : null;
 
             return(
-                <Form onSubmit={(e) => this.onFormSubmit(e)} className={this.props.className} inline>
+                <Form className={this.props.className} inline>
                     {p && this.props.showText && <p className="my-0" style={{"whiteSpace": "pre-wrap"}}>{p}</p>}
                     {a && <a ref={link => { this.link = link }} className="ml-1 mt-auto" href="#"
                              onClick={(e) => {e.preventDefault(); this.setState({isEditing: !this.state.isEditing})}}>{a}</a>}
