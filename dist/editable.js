@@ -592,9 +592,6 @@ var Editable = /*#__PURE__*/function (_React$Component) {
           title: this.props.label
         }, this.getEditingComponent())) : null;
         return /*#__PURE__*/React.createElement(reactBootstrap.Form, {
-          onSubmit: function onSubmit(e) {
-            return _this4.onFormSubmit(e);
-          },
           className: this.props.className,
           inline: true
         }, p && this.props.showText && /*#__PURE__*/React.createElement("p", {
