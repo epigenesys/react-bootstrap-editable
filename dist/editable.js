@@ -294,7 +294,7 @@ function styleInject(css, ref) {
   }
 }
 
-var css_248z = "#editable-popover {\n  max-width: none !important;\n}\n\n#editable-popover .fa-spinner,\n#editable-popover .btn {\n  margin-left: 5px;\n}\n\n#editable-popover .btn {\n  vertical-align: top;\n}\n\n#editable-popover .help-block {\n  margin: 0px;\n}\n\n#editable-popover .has-error .help-block {\n  margin-top: 5px\n}";
+var css_248z = "#editable-popover {\n  max-width: none !important;\n}\n\n#editable-popover .fa-spinner,\n#editable-popover .btn {\n  margin-left: 5px;\n}\n\n#editable-popover .btn {\n  vertical-align: top;\n}\n\n#editable-popover .help-block {\n  margin: 0px;\n}\n\n#editable-popover .has-error input {\n  width: 100%;\n}\n\n#editable-popover .has-error .help-block {\n  margin-top: 5px;\n  width: 250px;\n  white-space: normal;\n}";
 styleInject(css_248z);
 
 var fontAwesomeStyle = {
