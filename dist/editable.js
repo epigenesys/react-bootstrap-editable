@@ -206,7 +206,8 @@ var TextField = /*#__PURE__*/function (_React$Component) {
         componentClass: this.state.componentClass,
         type: this.state.type,
         bsSize: "sm",
-        className: "mr-1"
+        className: "mr-1",
+        maxlength: this.props.maxlength
       }, this.state.options), /*#__PURE__*/React.createElement(reactBootstrap.FormControl.Feedback, null), /*#__PURE__*/React.createElement(reactBootstrap.HelpBlock, null, this.props.validationText)), this.props.controls);
     }
   }]);
@@ -428,7 +429,9 @@ var Editable = /*#__PURE__*/function (_React$Component) {
 
       switch (this.props.type) {
         case "textfield":
-          component = /*#__PURE__*/React.createElement(TextField, commonProps);
+          component = /*#__PURE__*/React.createElement(TextField, _extends({}, commonProps, {
+            maxlength: this.props.maxlength
+          }));
           break;
 
         case "select":
@@ -550,7 +553,7 @@ var Editable = /*#__PURE__*/function (_React$Component) {
       if ((this.state.isEditing || this.props.alwaysEditing) && this.props.mode === "inline") {
         return this.getEditingComponent();
       } else {
-        var value = this.state.value ? this.state.value : "No value"; //format date objects for display, might add a custom format function here later
+        var value = this.state.value ? this.state.value : "Empty"; //format date objects for display, might add a custom format function here later
 
         value = this.props.type === "date" && this.state.value ? new window.Date(this.state.value).toUTCString().slice(5, 16) : value;
         value = this.props.type === "file" && this.state.value ? this.state.value.name : value;
@@ -603,7 +606,7 @@ var Editable = /*#__PURE__*/function (_React$Component) {
           ref: function ref(link) {
             _this4.link = link;
           },
-          className: "ml-1 mt-auto",
+          className: "ml-1 mt-auto" + (a === 'No value' ? ' editable-empty' : ''),
           href: "#",
           onClick: function onClick(e) {
             e.preventDefault();

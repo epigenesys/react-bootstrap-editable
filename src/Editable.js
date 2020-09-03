@@ -89,10 +89,10 @@ export default class Editable extends React.Component{
         let component;
         switch(this.props.type){
             case "textfield":
-                component =  <TextField {...commonProps}/>;
+                component =  <TextField {...commonProps} maxlength={this.props.maxlength} />;
                 break;
             case "select":
-                component = <Select {...commonProps} options={this.props.options}/>;
+                component = <Select {...commonProps} options={this.props.options} />;
                 break;
             case "textarea":
                 component = <TextArea {...commonProps} />;
@@ -163,7 +163,7 @@ export default class Editable extends React.Component{
         if((this.state.isEditing || this.props.alwaysEditing) && this.props.mode === "inline"){
             return(this.getEditingComponent())
         }else{
-            let value = this.state.value? this.state.value: "No value"
+            let value = this.state.value? this.state.value: "Empty"
             //format date objects for display, might add a custom format function here later
             value = this.props.type === "date" && this.state.value? new window.Date(this.state.value).toUTCString().slice(5, 16) : value
             value = this.props.type === "file" && this.state.value? this.state.value.name : value
@@ -203,7 +203,7 @@ export default class Editable extends React.Component{
             return(
                 <Form className={this.props.className} inline>
                     {p && this.props.showText && <p className="my-0" style={{"whiteSpace": "pre-wrap"}}>{p}</p>}
-                    {a && <a ref={link => { this.link = link }} className="ml-1 mt-auto" href="#"
+                    {a && <a ref={link => { this.link = link }} className={"ml-1 mt-auto" + (a === 'No value' ? ' editable-empty' : '')} href="#"
                              onClick={(e) => {e.preventDefault(); this.setState({isEditing: !this.state.isEditing})}}>{a}</a>}
                     {popover}
                 </Form>

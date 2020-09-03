@@ -17,6 +17,7 @@ export default class TextField extends React.Component {
                         componentClass={this.state.componentClass}
                         type={this.state.type}
                         bsSize="sm" className="mr-1"
+                        maxlength={this.props.maxlength}
                     >
                         {this.state.options}
                     </FormControl>
