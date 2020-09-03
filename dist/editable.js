@@ -207,7 +207,7 @@ var TextField = /*#__PURE__*/function (_React$Component) {
         type: this.state.type,
         bsSize: "sm",
         className: "mr-1",
-        maxlength: this.props.maxlength
+        maxLength: this.props.maxLength
       }, this.state.options), /*#__PURE__*/React.createElement(reactBootstrap.FormControl.Feedback, null), /*#__PURE__*/React.createElement(reactBootstrap.HelpBlock, null, this.props.validationText)), this.props.controls);
     }
   }]);
@@ -430,7 +430,7 @@ var Editable = /*#__PURE__*/function (_React$Component) {
       switch (this.props.type) {
         case "textfield":
           component = /*#__PURE__*/React.createElement(TextField, _extends({}, commonProps, {
-            maxlength: this.props.maxlength
+            maxLength: this.props.maxLength
           }));
           break;
 

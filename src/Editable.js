@@ -89,7 +89,7 @@ export default class Editable extends React.Component{
         let component;
         switch(this.props.type){
             case "textfield":
-                component =  <TextField {...commonProps} maxlength={this.props.maxlength} />;
+                component =  <TextField {...commonProps} maxLength={this.props.maxLength} />;
                 break;
             case "select":
                 component = <Select {...commonProps} options={this.props.options} />;

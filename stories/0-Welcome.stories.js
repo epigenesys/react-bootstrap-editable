@@ -33,7 +33,7 @@ export const TextField = () => <Editable
 export const MaxLengthTextField = () => <Editable
   {...sharedProps}
   type="textfield"
-  maxlength="20"
+  maxLength="20"
 />;
 
 export const TextArea = () => <Editable
