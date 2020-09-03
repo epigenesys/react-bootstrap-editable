@@ -606,7 +606,7 @@ var Editable = /*#__PURE__*/function (_React$Component) {
           ref: function ref(link) {
             _this4.link = link;
           },
-          className: "ml-1 mt-auto" + (a === 'No value' ? ' editable-empty' : ''),
+          className: "ml-1 mt-auto" + (a === 'Empty' ? ' editable-empty' : ''),
           href: "#",
           onClick: function onClick(e) {
             e.preventDefault();
